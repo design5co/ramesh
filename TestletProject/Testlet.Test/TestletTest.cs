@@ -8,11 +8,16 @@ namespace Testlet.Test
         [Fact]
         public void RandomizeItems_Should_Return_Correct_Order()
         {
-            var items = new TestletService().GetOrderedItem();
+            var testletService = new TestletService();
+
+            var orderedItems = testletService.GetOrderedItem();
+
             // Assert
-            Assert.Equal(10, items.Count);
-            Assert.Equal(2, items.Take(2).Count(i => i.Type == ItemType.Pretest));
-            Assert.Equal(8, items.Skip(2).Count(i => i.Type == ItemType.Pretest || i.Type == ItemType.Operational));
+            Assert.Equal(10, orderedItems.Count);
+            Assert.Equal(2, orderedItems.Take(2).Count(i => i.Type == ItemType.Pretest));
+            Assert.Equal(8, orderedItems.Skip(2).Count(i => i.Type == ItemType.Pretest || i.Type == ItemType.Operational));
+
+            Assert.NotEqual(testletService.GetItems(), orderedItems);
         }
     }
 }
