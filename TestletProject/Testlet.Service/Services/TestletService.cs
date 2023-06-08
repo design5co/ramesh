@@ -1,4 +1,4 @@
-﻿using static Testlet.Service.Utilities.Enum;
+using static Testlet.Service.Utilities.Enum;
 using Testlet.Service.Utilities;
 
 namespace Testlet.Service.Services
@@ -23,7 +23,7 @@ namespace Testlet.Service.Services
             return lstItem.OrderBy(item => random.Next()).ToList();
         }
 
-        private List<Item> GetItems()
+        public List<Item> GetItems()
         {
             return new List<Item>
             {
